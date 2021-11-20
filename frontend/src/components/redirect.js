@@ -3,24 +3,24 @@ import KissDataService from "../services/kiss.js";
 import { useParams } from "react-router-dom";
 
 function Redirect() {
-  const { code } = useParams();
+    const { code } = useParams();
 
-  useEffect(() => {
-    redirectToLongUrl(code);
-  }, [code])
+    useEffect(() => {
+        redirectToLongUrl(code);
+    }, [code])
 
-  const redirectToLongUrl = code => {
-    KissDataService.get(code)
-    .then(response => {
-      window.location.href = response.data.longUrl;
-    })
-  }
+    const redirectToLongUrl = code => {
+        KissDataService.get(code)
+        .then(response => {
+            window.location.href = response.data.longUrl;
+        })
+    }
 
-  return (
-    <div>
-      Redirecting...
-    </div>
-  );
+    return (
+        <div>
+            Redirecting...
+        </div>
+    );
 }
 
 export default Redirect;
