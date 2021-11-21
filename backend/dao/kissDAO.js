@@ -6,9 +6,7 @@ let kiss;
 
 export default class KissDAO {
     static async injectDB(conn) {
-        if(kiss) {
-            return;
-        }
+        if(kiss) return;
 
         try {
             kiss = await conn.db(process.env.KISS_NS).collection("url");
@@ -30,20 +28,20 @@ export default class KissDAO {
     }
 
     static async create(longUrl) {
-        if(!Common.validateUrl(longUrl)) {
-            return "invalid url/url too short!";
-        }
-
         let code = Common.randomCode();
 
-        if(await this.one(code) != null){
+        if(await this.one(code) !== null){
             return this.create(longUrl);
         }
 
-        let res = await kiss.insertOne({
+        return await kiss.insertOne({
             code: code,
             longUrl: longUrl
         });
+    }
+
+    static async createReturn(longUrl) {
+        let res = await this.create(longUrl);
 
         return this.byId(res.insertedId);
     }

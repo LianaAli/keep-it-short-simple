@@ -1,9 +1,9 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import KissLogo from "./kiss-logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
 import Convert from "./components/convert.js";
 import Redirect from "./components/redirect.js";
-import KissLogo from "./kiss-logo.png";
 
 function App() {
     return (
@@ -27,7 +27,7 @@ function App() {
                 </Routes>
             </div>
 
-            <footer className="fixed-bottom m-2">
+            <footer className="fixed-bottom m-3">
                 Developed by <a href="https://github.com/LianaAli" target="_blank" rel="noreferrer">Liana Ali</a> 2021
             </footer>
         </div>
