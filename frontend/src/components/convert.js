@@ -26,7 +26,7 @@ function Convert() {
             setIsError(true);
 
             if(err.request.response){
-                setErrorMsg(err.response.data.error);
+                setErrorMsg(err.response.data.error ?? err.response.data);
             } else {
                 setErrorMsg("KISS is taking a power nap now! Let's try again shortly!");
             }
