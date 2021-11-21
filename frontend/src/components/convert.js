@@ -2,8 +2,9 @@ import { useState } from "react";
 import KissDataService from "../services/kiss.js";
 
 function Convert() {
+    const currentUrl = window.location.href;
     const [longUrl, setLongUrl] = useState("");
-    const [isConverted, setIsConverted] = useState(false);
+    const [result, setResult] = useState("");
 
     const handleInputChange = event => {
         setLongUrl(event.target.value);
@@ -11,32 +12,41 @@ function Convert() {
 
     const kissUrl = () => {
         KissDataService.create(longUrl)
-        .then(response => {
-            setIsConverted(true);
-            console.log(response.data);
+        .then(res => {
+            setResult(res.data);
+            setLongUrl("");
         });
     }
 
     return (
         <div>
+            <input 
+                className="form-control text-center"
+                type="text" 
+                placeholder="enter url to be KISS'ed here!"
+                onChange={handleInputChange}
+                value={longUrl}
+                required
+            />
+            <button 
+                className="btn btn-primary m-2"
+                onClick={kissUrl}
+            >
+                KISS it now!
+            </button>
             {
-                isConverted ? (
-                    <div>
-                        {longUrl}
+                result !== "" ? (
+                    <div className="m-5">
+                        <h3>YOUR URL HAVE BEEN KISS'ED!</h3>
+                        <label>KISS Url: </label>
+                        <pre>{currentUrl+result.code}</pre>
+                        
+                        <label>Original Url: </label>
+                        <pre>{result.longUrl}</pre>
                     </div>
-                ) : (
-                    <div>
-                        <input 
-                            type="text" 
-                            onChange={handleInputChange}
-                            value={longUrl}
-                            required
-                        />
-                        <button onClick={kissUrl}>KISS!</button>
-                    </div>
-                )
+                ) : null
             }
-        </div>
+        </div>   
     );
 }
 

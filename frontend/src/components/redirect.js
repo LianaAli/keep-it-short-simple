@@ -18,7 +18,8 @@ function Redirect() {
 
     return (
         <div>
-            Redirecting...
+            <div className="spinner-border" role="status" />
+            <div>Redirecting...</div>
         </div>
     );
 }
