@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import KissDataService from "../services/kiss.js";
 
 function Convert() {
@@ -54,7 +55,7 @@ function Convert() {
                     <div className="m-5">
                         <h3>YOUR URL HAVE BEEN KISS'ED!</h3>
                         <label>KISS Url: </label>
-                        <pre>{currentUrl+result.code}</pre>
+                        <pre><Link to={"/" + result.code}>{currentUrl + result.code}</Link></pre>
                         
                         <label>Original Url: </label>
                         <pre>{result.longUrl}</pre>

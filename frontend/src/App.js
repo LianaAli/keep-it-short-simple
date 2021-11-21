@@ -17,18 +17,18 @@ function App() {
             <div className="m-5">
                 <Routes>
                     <Route 
-                        path="/" 
+                        exact path="/" 
                         element={<Convert />}
                     />
                     <Route 
-                        path=":code" 
+                        path="/:code" 
                         element={<Redirect />}
                     />
                 </Routes>
             </div>
 
             <footer className="fixed-bottom m-3">
-                Developed by <a href="https://github.com/LianaAli" target="_blank" rel="noreferrer">Liana Ali</a> 2021
+                <a href="https://github.com/LianaAli/keep-it-short-simple" target="_blank" rel="noreferrer">KISS</a> | Developed by <a href="https://github.com/LianaAli" target="_blank" rel="noreferrer">Liana Ali</a> 2021
             </footer>
         </div>
     );
